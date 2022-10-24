@@ -32,6 +32,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnSort = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // BtnAdd
@@ -42,6 +43,7 @@
             this.BtnAdd.TabIndex = 0;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnEdit
             // 
@@ -51,6 +53,7 @@
             this.BtnEdit.TabIndex = 1;
             this.BtnEdit.Text = "Edit";
             this.BtnEdit.UseVisualStyleBackColor = true;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // BtnSort
             // 
@@ -68,11 +71,21 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
             // 
+            // ListBox
+            // 
+            this.ListBox.FormattingEnabled = true;
+            this.ListBox.Location = new System.Drawing.Point(294, 29);
+            this.ListBox.Name = "ListBox";
+            this.ListBox.Size = new System.Drawing.Size(120, 95);
+            this.ListBox.TabIndex = 4;
+            this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ListBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnSort);
             this.Controls.Add(this.BtnEdit);
@@ -90,6 +103,7 @@
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnSort;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox ListBox;
     }
 }
 
