@@ -33,6 +33,7 @@
             this.BtnSort = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ListBox = new System.Windows.Forms.ListBox();
+            this.BtnBinarySearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAdd
@@ -63,6 +64,7 @@
             this.BtnSort.TabIndex = 2;
             this.BtnSort.Text = "Sort";
             this.BtnSort.UseVisualStyleBackColor = true;
+            this.BtnSort.Click += new System.EventHandler(this.BtnSort_Click);
             // 
             // textBox1
             // 
@@ -76,15 +78,26 @@
             this.ListBox.FormattingEnabled = true;
             this.ListBox.Location = new System.Drawing.Point(294, 29);
             this.ListBox.Name = "ListBox";
-            this.ListBox.Size = new System.Drawing.Size(120, 95);
+            this.ListBox.Size = new System.Drawing.Size(120, 316);
             this.ListBox.TabIndex = 4;
             this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
+            // 
+            // BtnBinarySearch
+            // 
+            this.BtnBinarySearch.Location = new System.Drawing.Point(107, 123);
+            this.BtnBinarySearch.Name = "BtnBinarySearch";
+            this.BtnBinarySearch.Size = new System.Drawing.Size(75, 23);
+            this.BtnBinarySearch.TabIndex = 5;
+            this.BtnBinarySearch.Text = "Binary Search";
+            this.BtnBinarySearch.UseVisualStyleBackColor = true;
+            this.BtnBinarySearch.Click += new System.EventHandler(this.BtnBinarySearch_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(431, 352);
+            this.Controls.Add(this.BtnBinarySearch);
             this.Controls.Add(this.ListBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnSort);
@@ -104,6 +117,7 @@
         private System.Windows.Forms.Button BtnSort;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.Button BtnBinarySearch;
     }
 }
 
