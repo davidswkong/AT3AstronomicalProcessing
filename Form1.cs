@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-// Alexander Doig, Team1, Sprint2
-// 31/10/2022
+// Alexander Doig, Joseph Wiss, David Kong  Team1, Sprint2
+// 14/11/2022
 // Version: 01
 // AstronomicalProcessing
 // 24 random integers are added to an array, array can be displayed in listbox and interacted with by user with methods for editing, binary search and sorting
