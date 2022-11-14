@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-// Joseph Wiss, Team1, Sprint1
+// Alexander Doig, Team1, Sprint2
 // 31/10/2022
 // Version: 01
 // AstronomicalProcessing
@@ -69,22 +69,22 @@ namespace AstronomicalProcessing
             var Index = ListBox.SelectedIndex;
             int temp = 0;
 
-            if (Int32.TryParse(textBox1.Text, out temp) && Index!=-1)
+            if (Int32.TryParse(textBox1.Text, out temp) && Index != -1)
             {
                 NeutrinoInteractions[Index] = temp;
                 textBox1.Clear();
-                UpdateList();            
+                UpdateList();
             }
         }
-            
+
 
         // Performs method if selectedindex is changed
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if(ListBox.SelectedIndex >= 0)
+            if (ListBox.SelectedIndex >= 0)
                 textBox1.Text = NeutrinoInteractions[ListBox.SelectedIndex].ToString();
- 
+
         }
 
         // Sorts values in ListBox into Ascending order
@@ -117,7 +117,7 @@ namespace AstronomicalProcessing
            if index is greater than -1, Confirmation message, else, error message.
            */
         {
-            
+
             try
             {
                 int userInput = int.Parse(textBox1.Text);
@@ -167,6 +167,103 @@ namespace AstronomicalProcessing
             return -1;
 
         }
-    }   
+
+        private void BtnMean_Click(object sender, EventArgs e)
+        /*finding average of data set*/
+        {
+            double avg = 0, sum = 0;
+            int lstCount = ListBox.Items.Count; //Get Count of Listbox Items
+            for (int i = 0; i < lstCount; i++)
+            {
+                sum += Convert.ToDouble(ListBox.Items[i]);
+            }
+            avg = sum / lstCount;
+
+            textBox2.Text = avg.ToString("0.00");//2 decimal places
+
+
+        }
+
+        private void BtnMode_Click(object sender, EventArgs e)
+        {
+            var groups = NeutrinoInteractions.GroupBy(v => v);
+            int maxCount = groups.Max(g => g.Count());
+            int mode = groups.First(g => g.Count() == maxCount).Key;
+            textBox2.Text = mode.ToString();
+        }
+
+        private void BtnRange_Click(object sender, EventArgs e)
+        {
+            //range of data set 
+            int smallestValue = int.MaxValue;
+            int largestValue = int.MinValue;
+            double range = 0;
+            foreach (var item in ListBox.Items)
+            {
+                int value = int.Parse(item.ToString());
+
+                if (value > largestValue)
+                    largestValue = value;
+
+                if (value < smallestValue)
+                    smallestValue = value;
+            }
+            range = largestValue - smallestValue; // custom calculation
+            textBox2.Text = range.ToString();
+
+
+        }
+
+        private void BtnMidExtreme_Click(object sender, EventArgs e)
+        {
+            //mid extreme button
+            int smallestValue = int.MaxValue;
+            int largestValue = int.MinValue;
+            double midxtreme = 0;
+            foreach (var item in ListBox.Items)
+            {
+                int value = int.Parse(item.ToString());
+
+                if (value > largestValue)
+                    largestValue = value;
+
+                if (value < smallestValue)
+                    smallestValue = value;
+            }
+            midxtreme = (largestValue + smallestValue) / 2;
+            textBox2.Text = midxtreme.ToString();
+        }
+
+        private void btnSSearch_Click(object sender, EventArgs e)
+        {
+            var counter = 0;
+
+            for (int i = 0; i < this.ListBox.Items.Count; i++)
+            {
+                var item = this.ListBox.Items[i];
+                if (string.Equals(item.ToString(), this.textBox1.Text, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    this.ListBox.SelectedItems.Add(item);
+                    counter++;
+                }
+
+            }
+            if (counter == 0)
+            {
+                MessageBox.Show($"No matches for \"{this.textBox1.Text}\" found!", "Search Results",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox1.Clear();
+                textBox1.Focus();
+            }
+            else
+            {
+                MessageBox.Show($"{counter} items found for \"{this.textBox1.Text}\"!", "Search Results",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBox1.Focus();
+            }
+
+
+        }
+    }
 }
 
