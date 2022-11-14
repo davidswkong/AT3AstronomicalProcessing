@@ -167,7 +167,7 @@ namespace AstronomicalProcessing
             return -1;
 
         }
-
+        //Mean button (find average of data set)
         private void BtnMean_Click(object sender, EventArgs e)
         /*finding average of data set
         double variables defined
@@ -187,7 +187,7 @@ namespace AstronomicalProcessing
 
 
         }
-
+        //mode button (most common value in data seta)
         private void BtnMode_Click(object sender, EventArgs e)
         {
             /*most common number found
@@ -198,7 +198,7 @@ namespace AstronomicalProcessing
             int mode = groups.First(g => g.Count() == maxCount).Key;
             textBox2.Text = mode.ToString();//convert mode int to string to show in textbox
         }
-
+        //range button (difference between smallest and largest number)
         private void BtnRange_Click(object sender, EventArgs e)
         {
             /*range of data set 
@@ -222,10 +222,9 @@ namespace AstronomicalProcessing
 
 
         }
-
+        //mid extreme button (average of smallest and largest number in data set)
         private void BtnMidExtreme_Click(object sender, EventArgs e)
         {
-            //mid extreme button
             //finds the largest and smallest button then finds the average between the two numbers
             double smallestValue = int.MaxValue;
             double largestValue = int.MinValue;
@@ -244,6 +243,7 @@ namespace AstronomicalProcessing
             textBox2.Text = midxtreme.ToString();
         }
 
+        //Sequential search button (linear search)
         private void btnSSearch_Click(object sender, EventArgs e)
         {
             /* sequential search button 
