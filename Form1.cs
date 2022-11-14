@@ -22,7 +22,7 @@ namespace AstronomicalProcessing
         public Form1()
         {
             InitializeComponent();
-
+            toolStripStatusLabel1.Text = "Ready";
         }
 
         // 24 random integers are generated
@@ -227,8 +227,8 @@ namespace AstronomicalProcessing
         {
             //mid extreme button
             //finds the largest and smallest button then finds the average between the two numbers
-            int smallestValue = int.MaxValue;
-            int largestValue = int.MinValue;
+            double smallestValue = int.MaxValue;
+            double largestValue = int.MinValue;
             double midxtreme = 0;
             foreach (var item in ListBox.Items)
             {
