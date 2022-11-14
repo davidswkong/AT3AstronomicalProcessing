@@ -169,7 +169,11 @@ namespace AstronomicalProcessing
         }
 
         private void BtnMean_Click(object sender, EventArgs e)
-        /*finding average of data set*/
+        /*finding average of data set
+        double variables defined
+        find lisbox items count 
+        use calculate to find average
+         */
         {
             double avg = 0, sum = 0;
             int lstCount = ListBox.Items.Count; //Get Count of Listbox Items
@@ -177,7 +181,7 @@ namespace AstronomicalProcessing
             {
                 sum += Convert.ToDouble(ListBox.Items[i]);
             }
-            avg = sum / lstCount;
+            avg = sum / lstCount;//custom calculation
 
             textBox2.Text = avg.ToString("0.00");//2 decimal places
 
@@ -186,16 +190,21 @@ namespace AstronomicalProcessing
 
         private void BtnMode_Click(object sender, EventArgs e)
         {
+            /*most common number found
+             * Values defined 
+            maxcount equals the value found the most in data set*/
             var groups = NeutrinoInteractions.GroupBy(v => v);
             int maxCount = groups.Max(g => g.Count());
             int mode = groups.First(g => g.Count() == maxCount).Key;
-            textBox2.Text = mode.ToString();
+            textBox2.Text = mode.ToString();//convert mode int to string to show in textbox
         }
 
         private void BtnRange_Click(object sender, EventArgs e)
         {
-            //range of data set 
-            int smallestValue = int.MaxValue;
+            /*range of data set 
+            largest and smallest value is found 
+            and the difference between these values is calculated*/ 
+            int smallestValue = int.MaxValue;//values defined
             int largestValue = int.MinValue;
             double range = 0;
             foreach (var item in ListBox.Items)
@@ -217,6 +226,7 @@ namespace AstronomicalProcessing
         private void BtnMidExtreme_Click(object sender, EventArgs e)
         {
             //mid extreme button
+            //finds the largest and smallest button then finds the average between the two numbers
             int smallestValue = int.MaxValue;
             int largestValue = int.MinValue;
             double midxtreme = 0;
@@ -236,31 +246,30 @@ namespace AstronomicalProcessing
 
         private void btnSSearch_Click(object sender, EventArgs e)
         {
+            /* sequential search button 
+             * toolstrip added instead of message boxes for better user interactions
+             */
             var counter = 0;
+            string target = textBox1.Text;
 
-            for (int i = 0; i < this.ListBox.Items.Count; i++)
+            for (int i = 0; i < NeutrinoInteractions.Length; i++)
             {
-                var item = this.ListBox.Items[i];
-                if (string.Equals(item.ToString(), this.textBox1.Text, StringComparison.InvariantCultureIgnoreCase))
+                var item = NeutrinoInteractions[i];
+                if ((string.Equals(item.ToString(), target, StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    this.ListBox.SelectedItems.Add(item);
+                    ListBox.SelectedIndex = i;
                     counter++;
-                }
+                    toolStripStatusLabel1.Text = $"Matches found for {target} found!!";
+                    textBox1.Focus();
+                    return;
+                }              
+            }
+            toolStripStatusLabel1.Text = $"No matches found for {target} found!";
+            textBox1.Clear();
+            textBox1.Focus();
 
-            }
-            if (counter == 0)
-            {
-                MessageBox.Show($"No matches for \"{this.textBox1.Text}\" found!", "Search Results",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBox1.Clear();
-                textBox1.Focus();
-            }
-            else
-            {
-                MessageBox.Show($"{counter} items found for \"{this.textBox1.Text}\"!", "Search Results",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBox1.Focus();
-            }
+
+            
 
 
         }
